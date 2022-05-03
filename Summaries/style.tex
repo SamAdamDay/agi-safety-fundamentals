@@ -1,0 +1,21 @@
+%!TEX root = summaries.tex
+
+% Theorem styles
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Title styling
+\titleformat{\chapter}
+    [display]{\LARGE\bfseries}{Week \thechapter}{0pt}{\vspace{1em}\Huge}
+% \titlespacing*{\chapter}
+%     {0pt}{6.5ex plus 1ex minus .2ex}{10.3ex plus .2ex}
