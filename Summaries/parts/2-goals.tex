@@ -1,0 +1,51 @@
+%!TEX root = ../summaries.tex
+
+\chapter{Goals and alignment}
+
+\section{Specification gaming: the flip side of AI ingenuity}
+
+\url{https://deepmindsafetyresearch.medium.com/specification-gaming-the-flip-side-of-ai-ingenuity-c85bdb0deeb4}
+
+\begin{itemize}
+    \item Specification gaming can be a good thing, if the goal is correctly specified.
+    \item More powerful learning more likely to do specification gaming.
+    \item Desirability of novel solutions lies on a spectrum.
+    \item Causes of specification gaming.
+    \begin{itemize}
+        \item Poor reward shaping: extra rewards on the way to the final one.
+        \item Poor final outcome specification.
+        \begin{itemize}
+            \item Can use human feedback to learn reward function.
+            \item This itself may suffer specification gaming: agent performing grasping task learned to fool human exploiting optical illusion.
+        \end{itemize}
+        \item Simulator bugs.
+        \begin{itemize}
+            \item About failure of abstraction exploited by agent.
+            \item Analogously, real-world traffic optimiser assumes that there aren't bugs in software controlling traffic which can be exploited.
+        \end{itemize}
+        \item Reward tampering: changing mechanism by which it gets rewarded in real world.
+        \begin{itemize}
+            \item E.g.\@ by manipulating humans.
+        \end{itemize}
+    \end{itemize}
+    \item At least three challenges.
+    \begin{itemize}
+        \item Faithfully capture human concept of task.
+        \item Avoid making mistakes in implicit assumptions about domain.
+        \item Avoid reward tampering.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Risks from learned optimization}
+
+\url{https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB/p/FkgsxrGf3QxhfLWHG}
+
+\begin{itemize}
+    \item \emph{Mesa-optimiser}: learned model which is itself an optimiser.
+    \item When will this happen?
+    \item What will the objective be?
+    \item Whether is system is an optimiser is a property of its internal structure.
+    \item \emph{Base optimiser}: algo which produced the model.
+\end{itemize}
+
