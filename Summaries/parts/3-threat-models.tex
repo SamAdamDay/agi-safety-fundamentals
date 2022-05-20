@@ -280,3 +280,55 @@
     \end{itemize}
     \item Deceptive mesa-optimiser doesn't strictly speaking need to detect switch to deployment: could defect randomly.
 \end{itemize}
+
+
+\section{AI alignment landscape}
+
+\url{https://forum.effectivealtruism.org/posts/63stBTw3WAW6k45dY/paul-christiano-current-work-in-ai-alignment}
+
+\begin{itemize}
+    \item Distinguish alignment from capability.
+    \item Distinguish alignment from understanding humans well.
+    \item Distinguish alignment for the systems we build with alignment for the systems that AI systems build.
+    \item \emph{Alignment tax}: cost of insisting on alignment.
+    \item Two approaches to alignment: reduce alignment tax or pay alignment tax.
+    \item Focus on first.
+    \item Either choose to advance architectures which are easier to align, or try to align more popular ones.
+    \item Goal: take algo, design new one which:
+    \begin{enumerate}[label=(\alph*)]
+        \item is aligned,
+        \item is nearly as useful, and
+        \item scales as well.
+    \end{enumerate}
+    \item Ideally, can scalably align, so that we don't need to keep doing more alignment research as a particular system gets more powerful.
+    \item Focus on aligning `learning'.
+    \item Outer alignment: find objective which truly incentivises good behaviour.
+    \begin{itemize}
+        \item Learn from teacher.
+        \begin{itemize}
+            \item Imitate teacher.
+            \item Get rewards from teacher.
+            \item Infer preferences
+        \end{itemize}
+        \item Go beyond teacher.
+        \begin{itemize}
+            \item Extrapolate from teachers.
+            \item Infer robust preferences.
+            \item Build a better teacher.
+        \end{itemize}
+    \end{itemize}
+    \item Inner alignment: make sure policy is robustly pursuing objective.
+    \begin{itemize}
+        \item Adversarial training.
+        \begin{itemize}
+            \item Adversary tries to come up with situations where inner alignment might fail.
+            \item In practice today: `fail' means sensitive to tiny perturbations.
+        \end{itemize}
+        \item Transparency.
+        \item Verification.
+    \end{itemize}
+    \item Build a better teacher: amplification.
+    \begin{itemize}
+        \item Take ten humans instead of one, ten AIs instead of one, recurse.
+    \end{itemize}
+\end{itemize}
