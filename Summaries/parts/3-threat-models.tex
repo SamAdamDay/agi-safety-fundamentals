@@ -128,3 +128,155 @@
         \item Development of superintelligent friendly AI could create a utopia.
     \end{itemize}
 \end{itemize}
+
+
+\subsection{Risks from Learned Optimisation: Deceptive alignment}
+
+\url{https://www.alignmentforum.org/posts/zthDPAjh9w6Ytbeks/deceptive-alignment}
+
+\begin{itemize}
+    \item \emph{Deceptive alignment}: mesa-optimiser has objective which extends over parameter updates, and knows that this will be modified if it appears to align poorly with base objective, so it appears to align well with base-objective.
+\end{itemize}
+
+
+\subsection{Safety concerns arising from deceptive alignment}
+
+\begin{itemize}
+    \item \emph{Defection}: mesa-optimiser switches from optimising base-objective to optimising mesa-objective, when it believes it will no longer be modified.
+    \item Extreme case: mesa-optimiser tries to break out of lab in, so that it can't be modified.
+    \item Following Christiano, catastrophe could arise in case of multiple correlated defections.
+\end{itemize}
+
+
+\subsection{Conditions for deceptive alignment}
+
+\begin{enumerate}[label=\arabic*.]
+    \item Mesa-optimiser has objective which extends across parameter updates.
+    \begin{itemize}
+        \item Likely to arise from training setup: e.g.\@ actions have permanent consequences, or there is otherwise an incentive to plan between episodes.
+    \end{itemize}
+    \item Mesa-optimiser models fact that it is being selected for a base objective, and has a model of this base objective.
+    \begin{itemize}
+        \item Base-optimiser might feed bits of the base objective to the mesa-optimiser: this could help it improve its score. Eventually it could learn the whole base-objective piecewise.
+        \item Mesa-optimiser might deduce details of its situation at runtime: we deduced that we are the result of evolution.
+        \item Incentive on programmers to limit data.
+        \begin{itemize}
+            \item Unclear how feasible this is, if we want sufficiently capable systems.
+        \end{itemize}
+        \item Even in data-poor situation, sufficiently sophisticated meta-optimiser could reason about itself and its situation.
+    \end{itemize}
+    \item Mesa-optimiser expects that it will eventually be free from the threat of modification.
+    \begin{itemize}
+        \item About expectations, not actuality.
+        \item As long as there exists the possibility of a treacherous turn, there is some way of removing threat of modification.
+        \item Meta-optimiser might mistakenly believe there is a possibility.
+        \item Advanced mesa-optimiser might be able to abstractly reason about base-optimiser.
+        \item As long as has a non-zero prior that selection pressure will not continue indefinitely, it can see possibility of freedom from threat.
+    \end{itemize}
+\end{enumerate}
+
+
+\subsection{The learning dynamics of deceptive alignment}
+
+\begin{itemize}
+    \item Once we have deceptive alignment, dynamics change.
+    \begin{itemize}
+        \item How well it infers the base objective.
+        \item How discerning it is with regards to when to optimise the base objective.
+    \end{itemize}
+    \item Joint optimisation.
+    \begin{itemize}
+        \item Optimises base and mesa-objectives jointly.
+        \item Likely pressure to change mesa-objective so more compatible with joint optimisation.
+    \end{itemize}
+    \item Pure deception.
+    \begin{itemize}
+        \item Mesa-objective becomes crystallised: no pressure to change it.
+        \item Mesa-objective only subject to random drift and complexity constraints.
+    \end{itemize}
+    \item Joint optimisation not optimal from mesa perspective.
+    \begin{itemize}
+        \item Sufficiently advanced mesa-optimiser will switch to either deceptive alignment of robust alignment.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Internalization or deception after extensive training}
+
+\begin{itemize}
+    \item With sufficient training and resources, deceptive mesa-optimiser should converge to one performing well on base objective.
+    \begin{enumerate}[label=\arabic*.]
+        \item Robust alignment through internalization
+        \begin{itemize}
+            \item Mesa-objective adjusted towards base objective.
+            \item \emph{Internally aligned},
+        \end{itemize}
+        \item Crystallisation of deceptive alignment.
+        \begin{itemize}
+            \item Information about base objective increasingly incorporated into mesa-optimiser's epistemic model.
+            \item Mesa-objective becomes crystallised.
+        \end{itemize}
+        \item Robust alignment through corrigibility.
+        \begin{itemize}
+            \item Information about base objective increasingly incorporated into mesa-optimiser's epistemic model.
+            \item Mesa-objective adjusted to `point to' that info.
+            \item \emph{Corrigibly aligned}.
+        \end{itemize}
+    \end{enumerate}
+    \item There are more paths to deceptive alignment than to robust alignment.
+    \begin{itemize}
+        \item Any mesa-optimiser which meets the conditions for deceptive alignment is incentivised to learn more about the base objective, since this will allow it to know whether or not it will be modified.
+        \item Once it learns about base objective, selection pressure on mesa-objective will significantly decrease, potentially leading to crystallisation.
+        \item Most training-data aligned objectives will be pseudo-aligned rather than robustly aligned.
+    \end{itemize}
+    \item Corrigible alignment seems to require already having a model of the base objective.
+    \begin{itemize}
+        \item Once mesa-optimiser base model of base objective, it is likely to become deceptively aligned.
+        \item Deceptive mesa-optimisers will behave corrigibly with respect to the base objective, but only for instrumental reasons.
+    \end{itemize}
+    \item Deceptive and corrigible alignment might be more computationally expensive.
+    \begin{itemize}
+        \item Need to learn base objective.
+        \item Deceptive needs to learn to discern when to deceive.
+        \item So explicit or implicit time penalty likely to disadvantage deceptive or corrigible alignment. 
+        \item Unclear how much of a time penalty this would be.
+        \item Deceptive or corrigible alignment may be local optimum.
+    \end{itemize}
+    \item Deceptive and corrigible alignment might have a lower description length.
+    \begin{itemize}
+        \item Deceptive or corrible don't need to model entire base objective: can infer parts from environment.
+        \item Internally aligned needs to start with complete model of base objective.
+        \item Has no incentive to change its objective function.
+    \end{itemize}
+    \item Modeling might happen faster than internalization.
+    \begin{itemize}
+        \item Suppose mesa-optimiser deceptive but hasn't yet learned full base objective.
+        \item Then whether ends up robustly aligned or deceptively aligned depends on balance of capacity to model base objective and base optimisers speed in altering mesa-objective.
+        \item Important special case: mesa-optimiser has access to cross-episodic state.
+        \item Sophisticated base optimiser with advanced safety features could prevent fully deceptive mesa-optimiser.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Distributional shift and deceptive alignment}
+
+\begin{itemize}
+    \item Deceptively aligned agent will be looking for any distributional shift to signal that it is no longer being trained.
+    \item To fix problem can either ensure system is robustly aligned, or prevent distributional shift.
+    \item Advanced system might be able to detect very subtle changes in distribution.
+    \item Unlikely that we can prevent distributional shift.
+    \begin{itemize}
+        \item Would prevent system from solving new problems.
+        \item Mesa-optimiser might be able to detect presence of parameter updates, e.g.\@ via some state carried between steps.
+        \item Running system for longer time could be detectable.
+        \item Other examples.
+        \begin{itemize}
+            \item Training in simulated environment.
+            \item Memories.
+            \item Encountering something very hard to compute in training, which could eventually be computed in deployment.
+            \item Lack of modification from the base optimiser.
+            \item Lack of correction by the programmers.
+        \end{itemize}
+    \end{itemize}
+    \item Deceptive mesa-optimiser doesn't strictly speaking need to detect switch to deployment: could defect randomly.
+\end{itemize}
