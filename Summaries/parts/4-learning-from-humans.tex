@@ -99,3 +99,24 @@
         \item Though outperform human reference summaries, those themselves are not rated very highly on axes of quality (accuracy, coverage, coherence, and overall).
     \end{itemize}
 \end{itemize}
+
+
+\section{Inverse Reinforcement Learning Example}
+
+\url{https://www.youtube.com/watch?v=h7uGyBcIeII}
+
+\begin{itemize}
+    \item Inferring reward function based on what actions are taken and what actions are not taken.
+    \item Maximum likelihood inverse reinforcement learning. Repeat:
+    \begin{enumerate}[label=(\roman*)]
+        \item Guess reward $R$.
+        \item Compute optimal policy $\pi$ for $R$.
+        \item Measure $p(D \mid \pi)$.
+        \item Gradient on $R$.
+    \end{enumerate}
+    \item What to do about final states?
+    \begin{itemize}
+        \item Want to indicate that these are good places to be, so should be there for a while.
+        \item But if there too long, it outweigh other actions taken.
+    \end{itemize}
+\end{itemize}
