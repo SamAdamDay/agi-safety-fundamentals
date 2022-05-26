@@ -120,3 +120,77 @@
         \item But if there too long, it outweigh other actions taken.
     \end{itemize}
 \end{itemize}
+
+
+\section{Learning from humans: what is inverse reinforcement learning?}
+
+\url{https://thegradient.pub/learning-from-humans-what-is-inverse-reinforcement-learning/}
+
+\begin{itemize}
+    \item {[}Not so well written. Best to also consult \cite{ng2000algorithms}.]
+    \item Generally, algorithms solving IRL can be seen as a way to use expert knowledge to convert a task description into a reward function.
+    \item Problem: a policy may be maximal for many different reward functions.
+    \item Solution: additionally require that certain properties are maximised (Ng and Russell).
+    \begin{itemize}
+        \item Maximise difference between quality of optimal solution and next-best, subject to some bound.
+        \begin{itemize}
+            \item Gives a reward function for which the policy is clearly distinguished.
+        \end{itemize}
+        \item Minimise reward vector.
+        \begin{itemize}
+            \item Encourages reward function to be simpler.
+            \item Ng and Russell use L1 norm.
+        \end{itemize}
+    \end{itemize}
+    \item Value of policy $\pi$ given reward $R$ and discount factor $\gamma$:
+    \begin{equation*}
+        V^\pi(s_1) = \bb E[R(s_1) + \gamma R(s_2) + \gamma^2 R(s_3) + \cdots \mid \pi]
+    \end{equation*}
+    where we take the expectation over the distribution of states $(s_1, s_2, \ldots)$ passed through under the policy.
+    \item Using sampled trajectories.
+    \begin{itemize}
+        \item In most real-world situations, we don't have access to the full policy, but instead to a number of (Monte Carlo) trajectories through it: episodes of applying this policy.
+        \item Parametrise reward as:
+        \begin{equation*}
+            R(s) = \alpha_1 \phi_1(s) +  \cdots + \alpha_d \phi_d(s)
+        \end{equation*}
+        where $\phi_1, \ldots, \phi_d$ are basis functions chosen beforehand.
+        \item We learn the weights $\alpha_1, \ldots, \alpha_d$ from the data (trajectories observed).
+        \item Let $\pi^*$ be the hypothetical optimal policy given by human experts.
+        \item Sample trajectories from $\pi^*$ and use these to estimate the value of each basis function under this policy.
+        \item We can then estimate the value of the full reward, given values $\alpha_1, \ldots, \alpha_d$.
+        \item We will do the same for various other policies $\pi_1, \pi_2, \ldots$.
+        \item The way the algorithm works:
+        \begin{itemize}
+            \item Start with a random policy $\pi_1$.
+            \item Optimise the weights so as to maximise the difference in value between $\pi^*$ and the other policies $\pi_1, \ldots, \pi_k$ computed so far.
+            \item Find a new policy $\pi_{k+1}$ which maximises the value using this new reward.
+            \item Repeat.
+        \end{itemize}
+    \end{itemize}
+    \item Apprenticeship Learning: learning from a teacher.
+    \begin{itemize}
+        \item Learns optimal policy, bases on expert-provided approximation to this.
+        \item Does this with minimal exploration.
+        \begin{itemize}
+            \item Better in fragile training environments, like helicopter flight.
+            \item Converges quicker.
+        \end{itemize}
+        \item Algorithm.
+        \begin{itemize}
+            \item Run trials on expert policy.
+            \item Estimate transition probabilities using this recorded data, using MLE.
+            \item Estimate value of expert policy.
+            \item Learn optimal policy for estimated system.
+            \item Test it.
+            \item Use data gathered from this trial to improve estimate of system, and repeat.
+        \end{itemize}
+    \end{itemize}
+    \item Further work.
+    \begin{itemize}
+        \item Want to go beyond human level.
+        \item Be able to compute reward without assuming expert policy is optimal.
+        \item Be able to learn behaviours that humans can identify but not demonstrate.
+        \item Scale up to work with deep learning.
+    \end{itemize}
+\end{itemize}
