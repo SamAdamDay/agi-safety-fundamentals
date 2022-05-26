@@ -4,6 +4,8 @@
 
 \section{Imitation Learning, Part 1}
 
+\url{https://youtu.be/kGc8jOy5_zY}
+
 \begin{itemize}
     \item Differences when moving from prediction to control for AI systems
     \begin{itemize}
@@ -31,5 +33,22 @@
         \item \emph{Behaviour cloning}.
         \item Doesn't work in theory: small mistakes compound, and we quickly diverge from training distribution.
         \item Works reasonably well in practice, given enough training data.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Learning from Human Preferences}
+
+\url{https://openai.com/blog/deep-reinforcement-learning-from-human-preferences/}
+
+\begin{itemize}
+    \item Using feedback to infer goal.
+    \item Builds model of goal based on feedback.
+    \item Learns also when to ask for feedback.
+    \item Trained on various games.
+    \item Sometimes does better using human feedback than game's actual reward function (the score), since human shapes the reward function better.
+    \item Limited by human evaluators intuition on what looks correct.
+    \begin{itemize}
+        \item On one task, learned to trick human using optical illusion.
     \end{itemize}
 \end{itemize}
