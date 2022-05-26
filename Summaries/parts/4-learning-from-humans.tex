@@ -52,3 +52,50 @@
         \item On one task, learned to trick human using optical illusion.
     \end{itemize}
 \end{itemize}
+
+
+\section{Learning to Summarize with Human Feedback}
+
+\url{https://openai.com/blog/learning-to-summarize-with-human-feedback/}
+
+\begin{itemize}
+    \item Used human feedback to train summarisers.
+    \item Produced better performance than much larger models trained only with supervised learning.
+    \item Models usually trained with objective to predict next word, but what we really want is high-quality summaries.
+    \begin{itemize}
+        \item Models can make up things when unsure.
+        \item Models can imitate harmful social biases.
+    \end{itemize}
+    \item First train reward model using supervised learning, then fine-tune language model with reinforcement learning.
+    \item Provided frequent feedback to human labellers, to ensure that the labellers were marking according to their goals.
+    \item Tested generalisation capacity by using a different dataset, with different types of text.
+    \begin{itemize}
+        \item Model had been pre-trained on these, but had no human feedback.
+        \item Produced high-quality summaries.
+        \item When length adjusted, produced even better summaries than the human-made samples.
+    \end{itemize}
+    \item Core method.
+    \begin{enumerate}[label=\arabic*.]
+        \item Train initial summariser.
+        \item Build dataset of human comparisons between summaries.
+        \item Train reward model to predict human preference.
+        \item Fine-tune summariser using RL and reward model.
+    \end{enumerate}
+    \item Took care to ensure high-quality human data.
+    \item Optimising reward model eventually lead to quality degradation.
+    \begin{itemize}
+        \item Reward model only a proxy for human preferences.
+        \item Trained on relatively small set of summaries.
+        \item When the model optimised to the reward too much, it overfit, and produced poor summaries.
+    \end{itemize}
+    \item Limitations.
+    \begin{itemize}
+        \item For more complex tasks, unlikely that researcher labels should be taken as `gold standard'.
+        \begin{itemize}
+            \item Should hire labellers from impacted groups to define `good' behaviour and reinforce it.
+        \end{itemize}
+        \item Model trained on Reddit data, and sometimes produced harmful summaries.
+        \item Used significant compute resources.
+        \item Though outperform human reference summaries, those themselves are not rated very highly on axes of quality (accuracy, coverage, coherence, and overall).
+    \end{itemize}
+\end{itemize}
