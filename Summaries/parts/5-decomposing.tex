@@ -1,0 +1,119 @@
+%!TEX root = ../summaries.tex
+
+\chapter{Decomposing tasks for outer alignment}
+
+\section{Factored cognition}
+
+\url{https://ought.org/research/factored-cognition}
+
+
+\subsection{Introduction}
+
+\begin{itemize}
+    \item \emph{One-step amplification}: agent has a number of copies of itself which work on sub-tasks with equal limitations on computational capacity.
+    \item \emph{Iterated amplification}: this iterated.
+    \item \emph{Factored cognition}: learning broken down like this into small and mostly independent tasks.
+\end{itemize}
+
+
+\subsection{Scalable mechanisms for solving cognitive tasks}
+
+\begin{itemize}
+    \item Want to find mechanisms for solving cognitive tasks which scale with respect to number of human work-hours and access to ML algorithms.
+    \item Assumptions.
+    \begin{enumerate}[label=(\arabic*)]
+        \item\label{item:well-motivated; assumptions; factored cognition} Human workers well-motivated.
+        \item\label{item:limited time; assumptions; factored cognition} Each only available for say 15 minutes.
+        \item\label{item:same background; assumptions; factored cognition} Each has same background knowledge.
+    \end{enumerate}
+    \item Mechanism: \emph{Iterated Distillation-Amplification}.
+    \item Example cognitive tasks.
+    \begin{itemize}
+        \item Read this book and tell me why $x$ did $y$.
+        \item Provide a detailed analysis of the pros and cons of these two products.
+        \item Tell me how to invest \$100k to achieve the most social good.
+        \item Write a paper on NLP that substantially advances the state of the art.
+    \end{itemize}
+    \item Scalability.
+    \begin{itemize}
+        \item More resources $\rsa$ better results.
+        \item Resources: human work-hours and ML algos.
+        \item Better: more aligned with task-setter's interests.
+        \item Scalability desirable because it helps turn thinking into a commodity.
+        \item Scalable system automatically gets more helpful when we plug in more advanced ML systems.
+    \end{itemize}
+    \item Organizing human work on cognitive tasks.
+    \begin{itemize}
+        \item Scalability of single person doing task limited by number of hours available and ability to reason and learn.
+        \item Scalability of group of people limited by communication and delegation.
+        \item Doesn't discuss motivation problem (assumption \ref{item:well-motivated; assumptions; factored cognition}).
+        \item How do we orchestrate people so that the output scales with number of people.
+        \item Short-term context-free work.
+        \begin{itemize}
+            \item By assumption \ref{item:limited time; assumptions; factored cognition}, no worker has time to build up much context.
+            \item Can we compose simple local tasks to solve a complex problem?
+        \end{itemize}
+        \item Coordination of short-term work as algorithm design.
+        \begin{itemize}
+            \item Take humans to be a function which takes a task string and outputs result (assumption \ref{item:same background; assumptions; factored cognition}).
+            \item Can we mechanically compose calls to this stateless function to solve task?
+            \item This is about algorithm design.
+        \end{itemize}
+        \item Matching the quality of any other approach to solving cognitive tasks.
+        \begin{itemize}
+            \item Want approach that scales with number of calls to function.
+            \item Could compare to other ways of solving task.
+            \begin{itemize}
+                \item Is there a number of calls to function with means we can do as well as any other fixed solution?
+                \item Problem: evaluating how well a task is solved a hard cognitive question.
+                \item Problem: empirical content of solutions, which may include built-in solutions to some tasks.
+            \end{itemize}
+            \item Alternative: compare to subjective of idealised deliberation.
+            \begin{itemize}
+                \item Problem: this is exactly what we're trying to solve.
+            \end{itemize}
+            \item Best compromise: can we solve any task to arbitrary high quality?
+            \begin{itemize}
+                \item Unlikely to be the case: any task which involves learning could be done without learning.
+                \item Might still be useful to aim for it, to get systems which scale well in practice, but have theoretical bounds.
+                \item Also: might produce alternatives to solutions which are expensive to implement directly.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \item Applying machine learning to cognitive tasks.
+    \begin{itemize}
+        \item Scalability now also wrt to ML sophistication.
+        \begin{itemize}
+            \item Better priors.
+            \item Better inference.
+            \item Better training paradigms.
+        \end{itemize}
+        \item Approaches that don't scale.
+        \begin{itemize}
+            \item Training systems on $(\text{task}, \text{solution})$ pairs.
+            \begin{itemize}
+                \item Doesn't scale because we can't generate an arbitrary quantity of training data: can't generate solutions of arbitrarily high quality.
+            \end{itemize}
+            \item Reinforcement learning based on how good a solutions seems.
+            \begin{itemize}
+                \item Optimises for proxy to solution's goodness.
+            \end{itemize}
+        \end{itemize}
+        \item An approach that might scale.
+        \begin{itemize}
+            \item Worthwhile to consider how to scalably apply current ML algos, assuming they only scale along the dimensions mentioned above.
+            \item Iterated Distillation-Amplification.
+            \begin{enumerate}[label=\arabic*.]
+                \item Initialise fast ML $A$ randomly.
+                \item Repeat:
+                \begin{enumerate}[label=\alph*.]
+                    \item Amplification: Build slow system which involves human making single step, with multiple calls to $A$.
+                    \item Distillation: Retrain $A$ to imitate behaviour of this slow system.
+                \end{enumerate}
+            \end{enumerate}
+            \begin{itemize}
+                \item Depends on ability to decompose task into small context-free steps.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
