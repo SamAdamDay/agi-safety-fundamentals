@@ -117,3 +117,38 @@
         \end{itemize}
     \end{itemize}
 \end{itemize}
+
+
+\section{Recursively Summarizing Books with Human Feedback}
+
+\url{https://arxiv.org/abs/2109.10862}
+
+
+\subsection{Introduction}
+
+\begin{itemize}
+    \item Task: summarise whole book.
+    \item Difficult to generate training data for whole task or evaluate model performance: human has to read entire book.
+    \item Recursively splits task into smaller: summarise small section, summarise summaries etc.
+    \item Humans can evaluate performance on smaller tasks.
+    \item \emph{Scalable oversight}: scalably evaluating model performance.
+    \item Single model for summarising.
+    \item Trained using cross-entropy behavioural cloning (BC), and with reinforcement learning (RL).
+    \item Obtain believable summaries for books containing 100,000s words.
+    \item Qualitatively, summaries contain important details, but fail to put work in broader context.
+    \item Qualitatively, model significantly outperforms baseline.
+    \item RL has better scaling properties.
+    \item Evaluate summaries on NarrativeQA dataset: zero-shot model taking summaries as input achieves good results on question-answers.
+\end{itemize}
+
+
+\subsection{Approach}
+
+\begin{itemize}
+    \item General approach: single model does both the decomposition and responding to subtasks.
+    \item This model: breaks text into chunks based on max chunk length.
+    \item Problem: summarisers in middle of book lack sufficient context to accurately summarise their chunks.
+    \begin{itemize}
+        \item Solution: add previous context: summaries of preceding parts of the same depth.
+    \end{itemize}
+\end{itemize}
