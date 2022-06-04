@@ -151,4 +151,89 @@
     \begin{itemize}
         \item Solution: add previous context: summaries of preceding parts of the same depth.
     \end{itemize}
+    \item Uniformity: all nodes in the decomposition tree are very similar.
+    \item Training.
+    \begin{itemize}
+        \item Start with pretrained language model GPT-3 and pool of human labellers.
+        \item Collect demonstrations and train using behavioural cloning.
+        \item Then repeat iterations of reward learning and reinforcement learning.
+        \item To learn the reward, collect comparisons from humans.
+        \item RL optimises the reward plus KL term for initial policy.
+        \item Auto-induced distributional shift.
+        \begin{itemize}
+            \item Outputs of model itself are outside the training distribution.
+            \item Likely more severe later on in the book and higher up the tree.
+            \item Did not measure severity.
+            \item Found that more training on level 0 yielded better results on level 1.
+        \end{itemize}
+        \item Training curriculum.
+        \begin{itemize}
+            \item \emph{First subtree}: first height-1 node and its height-0 children.
+            \item \emph{First leaves}: height-0 children in first subtree.
+            \item First trained exclusively on first leaves.
+            \item Then moved to first subtree.
+            \item At this point, model can already generalise to full tree.Training dataset
+            \item Curriculum changes made in ad-hoc manner.
+        \end{itemize}
+    \end{itemize}
+    \item Advantages of decomposition.
+    \begin{itemize}
+        \item Easier to collect human feedback.
+        \item Empowers human to do or evaluate part of task themself.
+        \item Easier to trace model thinking and debug.
+        \item Generalises quickly to longer books.
+    \end{itemize}
 \end{itemize}
+
+
+\subsection{Task details}
+
+\begin{itemize}
+    \item Training dataset.
+    \begin{itemize}
+        \item Primarily fiction, over 100K words on average.
+        \item Only use narrative works.
+        \begin{itemize}
+            \item Harder to summarise.
+        \end{itemize}
+    \end{itemize}
+    \item Summarization task.
+    \begin{itemize}
+        \item Aim to summarise abstractly, rather than listing events.
+        \item Primary metric: overall summary quality on a 1-7 Likert scale, on books neither in GPT-3 training set nor model training set.
+        \item Aim to compress text by factor of 5--10$\times$.
+        \item Labellers asked to judge conditioned on length: \textquote{how good is this summary, given that it is X words long?}
+        \item Labellers only consider quality wrt to input, not wrt to subset of book in its context.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Results}
+
+\begin{itemize}
+    \item Methodology
+    \begin{itemize}
+        \item Used 40 most popular books published in 2020.
+        \item Two labellers read each book, then rate model-produced summaries and that of other labeller.
+        \item Labeller agreement on relative quality of model-produced summaries nearly 80\%.
+        \item Evaluate 175B and 6B parametered models.
+        \item For each, evaluate three training modes:
+        \begin{itemize}
+            \item RL on whole tree.
+            \item RL on first subtree.
+            \item BC on whole tree.
+        \end{itemize}
+        \item Findings.
+    \end{itemize}
+    \begin{itemize}
+        \item See \cref{fig:likert} for distributions of likert scores for various summarisers.
+        \item Likert scores for whole book significantly worst than for individual task. Errors accumulate.
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\linewidth]{images/likert-distros.png}
+    \caption{Likert distributions for various summarisers, taken from the paper}
+    \label{fig:likert}
+\end{figure}
