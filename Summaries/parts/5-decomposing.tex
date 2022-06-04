@@ -237,3 +237,33 @@
     \caption{Likert distributions for various summarisers, taken from the paper}
     \label{fig:likert}
 \end{figure}
+
+
+\section{AI Safety via Debate}
+
+\url{https://openai.com/blog/debate/}
+
+\begin{itemize}
+    \item Proposes method of aligning agents using debate games.
+    \item Idea: two agents debate correct output in natural language, and human judges who wins.
+    \item Motivation: while human cannot effectively explore/understand whole solution space, the debate of two `expert' agents provides a heuristic for solution quality.
+    \item Debate can focus on simpler factual claims, eventually producing sequence which human can effectively judge.
+    \item Proof of concept using sparse MNIST classifier.
+    \begin{itemize}
+        \item Judge AI trained to classify digits from small subset of pixels.
+        \item Two agents Alice and Bob.
+        \item Alice tries to deceive judge, Bob tries to honestly persuade.
+        \item Take turns revealing true white pixel.
+        \item Judge judges bases on final set of six pixels.
+        \item Debate turns 59.4\% accurate judge into 88.9\% accurate. 
+    \end{itemize}
+    \item Limitations and future work.
+    \begin{itemize}
+        \item Real test: powerful AIs debating using natural language with human interpreter.
+        \item Important to test debates where human biases play a role.
+        \item Debate cannot address distributional shift or adversarial examples.
+        \item No guarantee debate will arrive at optimal play.
+        \item Debate-trained agents use more computation.
+        \item Humans may be poor judges.
+    \end{itemize}
+\end{itemize}
