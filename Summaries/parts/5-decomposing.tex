@@ -239,6 +239,56 @@
 \end{figure}
 
 
+\section{Supervising strong learners by amplifying weak experts}
+
+\url{https://arxiv.org/abs/1810.08575}
+
+\begin{itemize}
+    \item Proposes \emph{Iterated Amplification}: progressively builds up training signal for complex tasks by combining solutions to simpler ones.
+\end{itemize}
+
+\subsection{Introduction}
+
+\begin{itemize}
+    \item Concerned with tasks where specifying reward function is beyond human capability (for single human, and quickly enough).
+    \begin{itemize}
+        \item Economic policy decisions.
+        \item Doing science.
+        \item Security of large network of computers.
+    \end{itemize}
+    \item Will allow expanding applicability of AI.
+    \item Will allow building robustly safe systems.
+    \begin{itemize}
+        \item In practice, find short-term proxy for what we want.
+        \item Aggressively optimising this can lead to pathological behaviour.
+    \end{itemize}
+    \item Iterated Amplification.
+    \begin{itemize}
+        \item Human agent $H$ trains ML agent $X$.
+        \item $H$ demonstrates target behaviour using several copies of $X$.
+        \item Write $\Amplify^H(X)$ for this composite system.
+        \item $X$ learns from $\Amplify^H(X)$ in normal way.
+        \item Need to make three design decisions.
+        \begin{itemize}
+            \item What tasks to solve?
+            \item To do we construct $\Amplify^H(X)$?
+            \item How does $X$ learn from $\Amplify^H(X)$?
+        \end{itemize}
+        \item Training process.
+        \begin{itemize}
+            \item $X$ initially behaves randomly, so $\Amplify^H(X)$ is the same as $H$.
+            \item As $X$ becomes more powerful, role of $H$ transitions to coordinating a groups of $X$'s.
+            \item Eventually the task of `find suitable subtasks' may be delegated to $X$.
+            \item As long as $\Amplify^H(X)$ is more powerful than $X$, it provides a useful training signal.
+        \end{itemize}
+        \item No external reward function: this is implicit in $H$'s behaviour.
+        \begin{itemize}
+            \item Aim: $X$ learns goal at the same time as learning to act competently.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
 \section{AI Safety via Debate}
 
 \url{https://openai.com/blog/debate/}
