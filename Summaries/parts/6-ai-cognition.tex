@@ -1,0 +1,133 @@
+%!TEX root = ../summaries.tex
+
+\chapter{Towards a principled understanding of AI cognition}
+
+\section{Feature Visualization}
+
+\url{https://distill.pub/2017/feature-visualization/}
+
+\begin{itemize}
+    \item Two main threads of interpretability research: feature visualisation and attribution.
+    \item Feature Visualization by Optimization.
+    \begin{itemize}
+        \item Exploits the fact that fact that neural networks are differentiable to find out what input would cause a certain behaviour.
+        \item Iteratively tweaks input.
+        \item Optimization Objectives.
+        \begin{itemize}
+            \item To understand individual features: search for examples that give high values either for a neuron or a whole channel.
+            \item To understand layer: use DeepDream objective, looking for inputs the layer finds `interesting'.
+            \item To understand classifier: search for examples optimising either class logits (before softmax) or class probabilities (after softmax).
+            \begin{itemize}
+                \item Experience: easiest way to maximise probability is to make everything else very unlikely.
+                \item So optimising logits produces better examples.
+            \end{itemize}
+            \item Many other objectives possible.
+            \begin{itemize}
+                \item Objectives used in style transfer.
+                \item Objectives used in optimisation-based model inversion.
+            \end{itemize}
+        \end{itemize}
+        \item Why visualise by optimisation?
+        \begin{itemize}
+            \item Why not look through dataset for examples?
+            \item Visualising by optimisation allows us to see what the network is really looking for.
+            \begin{itemize}
+                \item Separates things causing behaviour from things which merely correlate.
+                \item Might think (from dataset) that model is looking for buildings, but it's really looking for sky.
+            \end{itemize}
+            \item Flexibility.
+            \begin{itemize}
+                \item E.g.\@ want to know how neurons jointly represent info, so can ask what needs to be changed in input to get other ones to fire.
+                \item Allows us to visualise how model evolves as it trains.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \item Diversity.
+    \begin{itemize}
+        \item Examples capture full range of feature?
+        \item Dataset examples have advantage: capture whole range of ways that neuron can be activated.
+        \item Optimisation generally gives just one really positive example (and maybe one really negative one).
+        \item Achieving Diversity with Optimisation.
+        \begin{itemize}
+            \item A classier may be trained to classify a range of different inputs under one class.
+            \item Wei et al.\@ attempt to show this diversity using clustering.
+            \item Nguyen, Yosinski, and collaborators search through dataset for diverse examples and use these as starting points for optimisation.
+            \item In later work, combine visualising classes with generative model.
+            \item Simple method: add `diversity' term to objective, to force examples to be different.
+            \begin{itemize}
+                \item Downside: forcing diversity can cause unnatural artifacts, or examples to differ in strange ways.
+            \end{itemize}
+            \item Generating diverse examples enables us to get a fuller picture of what causes the neuron to activate.
+        \end{itemize}
+        \item Neurons don't necessarily correspond to single concepts: can represent strange mixtures of ideas.
+        \begin{itemize}
+            \item Neuron not necessarily right semantic unit for understanding neural nets.
+        \end{itemize}
+    \end{itemize}
+    \item Interaction between Neurons.
+    \begin{itemize}
+        \item Think about neuron activation space.
+        \item Individual neurons give basis vectors.
+        \item Random directions can be just as meaningful as basis directions.
+        \item But basis vector directions interpretable more often than random directions.
+        \item Summing neurons which `mean' different things can produce interesting combinations.
+        \item Can also interpolate.
+        \item Don't know how to select meaningful directions.
+        \item Don't know how to investigate how large number of directions interact (interpolation only works for a small number).
+    \end{itemize}
+    \item The Enemy of Feature Visualization.
+    \begin{itemize}
+        \item Optimising leads to an image full of high-frequency patterns and noise.
+        \item Seems related to phenomenon of adversarial examples.
+        \item Important part of the reason for this seems to be the use of strided convolution layers and pooling operations.
+        \item The Spectrum of Regularization.
+        \begin{itemize}
+            \item In order to get useful visualisations, need to impose regularisation, noise or constraint.
+            \item Spectrum of regularisation, from weak to strong.
+            \begin{enumerate}[label=(\roman*)]
+                \item Unregularised.
+                \item Frequency penalisation.
+                \item Transformation robustness.
+                \item Learned prior.
+                \item Dataset examples.
+            \end{enumerate}
+        \end{itemize}
+        \item Frequency penalization.
+        \begin{itemize}
+            \item Directly targets high frequency noise.
+            \item Either explicitly penalises high variation between neighbouring pixles, or implicitly using blur.
+            \item Discourage legitimate high-frequency features like edges.
+            \begin{itemize}
+                \item Can be slightly improved using bilateral filter, which preserves edges.
+            \end{itemize}
+        \end{itemize}
+        \item Transformation robustness.
+        \begin{itemize}
+            \item Tries to find examples that are robust to transformation.
+            \item For images even a small amount seems to be effective.
+            \item Stochastically jitter, rotate and scale before stepping the optimiser.
+        \end{itemize}
+        \item Learned priors.
+        \begin{itemize}
+            \item Try to learn a model of the real data and use that as prior.
+            \item Can generate photorealistic images.
+            \item Can be hard to tell what came from the model being visualised and what from the prior.
+            \item On approach: optimise within latent space given by generative model.
+            \item Another: jointly optimise prior along with objective.
+        \end{itemize}
+    \end{itemize}
+    \item Preconditioning and Parameterisation.
+    \begin{itemize}
+        \item About techniques not really reguliser on output example, but transformation of gradient.
+        \item This is preconditioning: essentially a reparametrisation which changes the optimisation landscape, preserving the minima but changing the steepness of points.
+        \begin{itemize}
+            \item Powerful technique in optimisation.
+            \item Can make optimisation problem much easier.
+        \end{itemize}
+        \item Good first guess at what preconditioner to use is one which makes data decorrelated.
+        \begin{itemize}
+            \item For images means doing gradient descent in Fourier basis with frequencies scaled so they have equal energy.
+            \item Resulting visualisations seem a lot better.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
