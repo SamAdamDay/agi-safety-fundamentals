@@ -354,3 +354,128 @@
     \end{itemize}
     \item Circuits could act as epistemic foundation for interpretability.
 \end{itemize}
+
+
+\section{Chris Olah's views on AGI safety}
+
+\url{https://www.alignmentforum.org/posts/X2i9dQQK3gETCyqh2/chris-olah-s-views-on-agi-safety}
+
+
+\subsection{The benefits of transparency and interpretability}
+
+\begin{itemize}
+    \item Catching problems with auditing.
+    \begin{itemize}
+        \item Give tools to audit AI before deployment.
+        \item If it's not learned the true objective, but a proxy, can throw it out.
+        \item Helps with a lot of robustness problems, provided that the AI is not trying to actively deceive tools.
+        \item Ideally, should be an ongoing process throughout development/training.
+        \item One of OpenAI Clarity team major research direction: more systematic auditing.
+        \begin{itemize}
+            \item Want interpretability tools to reliably be able to catch problems.
+            \item Auditing game.
+            \begin{itemize}
+                \item One researcher modifies network, so that it behaves weirdly.
+                \item Another has to figure out what has been done, using only interpretability tools (not looking at error cases).
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \item Deliberate design.
+    \begin{itemize}
+        \item Might lead to more deliberate design of systems.
+        \item Currently quite trial and error: throw different techniques at benchmarks and see what sticks.
+        \item Learning a little more about how our models work might make risks/lack of complete knowledge more glaring.
+    \end{itemize}
+    \item Giving feedback on process.
+    \begin{itemize}
+        \item Help to train better AIs by giving feedback to model not just on output, but on how it is structured.
+        \item Help it make the right decisions for the right reasons.
+        \item Help the final model be more transparent.
+        \item Could get human feedback on model structure using interpretability tools.
+        \begin{itemize}
+            \item Danger that now optimising to look good wrt this interface.
+        \end{itemize}
+        \item Model diffing.
+        \begin{itemize}
+            \item Way of systematically comparing models from point of view of high-level abstractions/concepts.
+            \item Can compare how model is evolving over time.
+        \end{itemize}
+    \end{itemize}
+    \item Building microscopes not agents.
+    \begin{itemize}
+        \item Seems like agents will be more competitive by default.
+        \item Don't have to build agents: with shift in culture could instead try to build `microscopes'.
+        \begin{itemize}
+            \item System examines world and learns from it, but doesn't take actions.
+            \item Use interpretability tools to figure out what system has learned.
+            \item Decide which action to take based on this.
+        \end{itemize}
+        \item Google Translate vs.\@ interface which gives access to all knowledge learned by Google Translate.
+        \item Microscopes allow us to understand the data.
+        \item Microscopes unlikely to be competitive with more traditional techniques.
+        \item But it might still be possible to realign ML community towards them, or to use them temporarily if one AI coalition is significantly more advanced than the rest.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{What if interpretability breaks down as AI gets more powerful?}
+
+\begin{itemize}
+    \item Chris: very strong interpretability is possible.
+    \item Can take NN and reverse compile it into understandable code.
+    \item Intuition: NNs do seem to learn meaningful features.
+    \item Chris: interpretability varies with model strength.
+    \begin{itemize}
+        \item Simple models are easily interpretable.
+        \item More complex models harder to understand.
+        \begin{itemize}
+            \item Chris: because this models don't yet have capacity to express the full concepts they need.
+            \item Have to rely on compressed proxies.
+        \end{itemize}
+        \item More advanced models tend to have cleaner, crisper concepts.
+        \item Much past human level, interpretability starts to decrease: crisp concepts but more alien and not understandable.
+        \item Author: amplified overseer might be able to counter this last trend.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Improving the field of machine learning}
+
+\begin{itemize}
+    \item Realignment of AI community.
+    \item Currently: chasing state-of-the-art results.
+    \item Not what most scientific fields look like.
+    \item Chris' vision.
+    \begin{itemize}
+        \item Focus on deliberate design.
+        \item Progress is made not by trail and error, but by deeply understanding current models.
+        \item Large proportion of field dedicated to understanding what models do, and not building new ones.
+    \end{itemize}
+    \item Two paths.
+    \begin{enumerate}[label=\arabic*.]
+        \item Get current researchers to switch to interpretability/deliberate design/etc.
+        \begin{itemize}
+            \item Way for researchers without access to vast amounts of compute to stay relevant.
+            \item Lots of low hanging fruits which could yield impressive results.
+            \item Very aligned with traditional scientific values.
+            \item Current unit of academic credit in ML is publishing papers, evaluated based on the state-of-the art on some benchmark.
+            \item Chris founded Distill.
+            \begin{itemize}
+                \item Aim: adapter between traditional evaluation method and new approach.
+                \item Publishes papers visualising systems, or increasing clarity of thought.
+                \item Can be recognised as legitimate academic journal.
+                \item Interactive diagrams.
+            \end{itemize}
+        \end{itemize}
+        \item Produce new researchers interested in these.
+        \begin{itemize}
+            \item Chris: convert neuroscientists and system biologists.
+            \begin{itemize}
+                \item High level similarities.
+                \item Would be able to get funding.
+                \item Better at running experiments.
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+    \item May well speed up capabilities, by Chris thinks the positive will outweigh the negative.
+\end{itemize}
