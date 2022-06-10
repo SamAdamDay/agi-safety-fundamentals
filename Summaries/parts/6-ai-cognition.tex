@@ -479,3 +479,99 @@
     \end{enumerate}
     \item May well speed up capabilities, by Chris thinks the positive will outweigh the negative.
 \end{itemize}
+
+
+\section{MIRI's Approach}
+
+\url{https://intelligence.org/2015/07/27/miris-approach/}
+
+\begin{itemize}
+    \item Biggest specialising assumptions behind MIRI's approach.
+    \begin{itemize}
+        \item Focus on scenario in which superhuman intelligence is software designed by humans.
+        \begin{itemize}
+            \item As opposed e.g.\@ to brain emulation.
+            \item Difficult to get all the way to brain emulation without reverse engineering and using that knowledge in system.
+            \item In any case, any highly reliable AI (superintelligent or not) likely to need at least some parts designed for safety from the group up.
+        \end{itemize}
+        \item Specialise on technical research.
+    \end{itemize}
+    \item Key question: \textquote{What would we still be unable to solve, even if the challenge were far simpler?}
+    \item Use this question to select open questions.
+    \item Filter for problems which are:
+    \begin{itemize}
+        \item Tractable: can we researched mathematically today.
+        \item Uncrowded: unlikely to get solved currently.
+        \item Critical: could not safely be delegated to machine.
+    \end{itemize}
+    \item Key claim: question generator for open problems whose solutions would help us design safer, more reliable systems in future.
+\end{itemize}
+
+
+\subsection{Creating a powerful AI system without understanding why it works is dangerous}
+
+\begin{itemize}
+    \item Current practice: researchers do not understand why systems work so well.
+    \item Shortcomings being addressed over time: people working on transparency, and on ML foundations.
+    \item Meanwhile: trail and error produced led to many advances.
+    \item When designing superintelligence, want very high degree of confidence in safety \emph{before} we start online testing.
+    \item Extensive testing essential, but not sufficient: need solid understanding of optimisation process to make use bad solutions aren't found.
+    \item MIRI: develop tools to understand superintelligence before deployment.
+    \item NN researchers probably could have gotten quite far without understanding probability theory, but would lack tools required to understand modern algos.
+    \item MIRI: similarly large chunks of AI theory missing.
+\end{itemize}
+
+
+\subsection{We could not yet create a beneficial AI system even via brute force.}
+
+\begin{itemize}
+    \item Couldn't brute-force a computer the size of Jupiter to maximise amount of diamond.
+    \begin{itemize}
+        \item Could do this for asking questions about images, or simulated conversations.
+        \item Don't even understand the problem well enough yet to brute-force.
+    \end{itemize}
+    \item \textquote{There are two types of open problem in AI. One is figuring how to solve in practice problems that we know how to solve in principle. The other is figuring out how to solve in principle problems that we don't even know how to brute force yet.}
+    \item MIRI: focuses on second task.
+    \item Why can't brute-force diamond maximiser?
+    \begin{itemize}
+        \item To interact productively in complex environment, system needs to model world, make predictions and rank outcomes.
+        \item Don't know how to brute-force world-modeller which produces models inspectable world-models, which can be used by other parts of the system.
+        \begin{itemize}
+            \item System would need to inspect world-model, to see how much carbon it has.
+            \item Where in the data structure are all the carbon atoms?
+            \item How do we ensure this is robust to changes in representation: e.g.\@ atoms vs.\@ protons. (Model discovers quantum mechanics)
+            \item Need to build multi-level representations of world.
+            \item Brute-force technique which optimises black-box world-modellers doesn't yield something which produces inspectable models.
+        \end{itemize}
+    \end{itemize}
+    \item By simplifying to problem of diamond-maximiser, vs.\@ more realistic goals, we factor out some problems we don't know how to solve, even in principle.
+\end{itemize}
+
+
+\subsection{Figuring out how to solve a problem in principle yields many benefits}
+
+\begin{itemize}
+    \item If you don't know how to solve problem completely using unlimited computing power, probably not ready to look for heuristic solutions.
+    \item Before we have formal understanding of problem, can't be sure what problem is.
+    \begin{itemize}
+        \item May fail to notice flaws in our reasoning.
+        \item May not bring appropriate tools to bear.
+    \end{itemize}
+    \item Point: identify basic methods useful for solving problem.
+    \item By seeking problems which currently can't even be solved in principle, aim to develop tools which programmers of the future will need to build safe, reliable AI systems.
+\end{itemize}
+
+
+\subsection{This is an approach researchers have used successfully in the past}
+
+\begin{itemize}
+    \item Rephrase key question: \textquote{can we reduce the problem of building a beneficial AI to some other, simpler problem?}
+    \item Common to do this in theoretical computer science and mathematics.
+    \item Humanity has good track record of solving problems in advance of when they are needed.
+    \begin{itemize}
+        \item Church and Turing for computing.
+        \item Kolmogorov fo probability theory.
+    \end{itemize}
+    \item MIRI questions (e.g.\@ \textquote{how would one ideally handle logical uncertainty?} or \textquote{how would one ideally build multi-level world models of a complex environment?}) exist at similar level of generality to past such questions.
+    \item By focusing on parts unable to solve even if problem was easier, hone in on parts where core insights are missing.
+\end{itemize}
