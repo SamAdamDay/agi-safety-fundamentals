@@ -248,3 +248,109 @@
         \end{itemize}
     \end{itemize}
 \end{itemize}
+
+
+\subsection{Claim 2: Circuits}
+
+\begin{itemize}
+    \item Study relationships between layers by studying circuits: subgraphs consisting of tightly linked features and weights between them.
+    \item Circuits surprisingly tractable an meaningful.
+    \item Can read off algorithms from circuits.
+    \item Circuit 1: Curve Detectors.
+    \begin{itemize}
+        \item Primarily implemented using earlier, more primitive curve detectors, and edge detectors.
+        \item Long tail of other features which make minor contribution.
+        \item Focus on relationship between primitive curve detectors and later ones.
+        \item Given a particular primitive one, later ones of the same orientation have curve of positive weights through convolution for the primitive one.
+        \item Later detector looking for `tangent curve' using earlier detectors.
+        \item True of all orientations.
+        \item Earlier curve detectors of the wrong orientation inhibited in later detectors.
+        \item Gets richer closer you look.
+        \item Weights rotate with orientation of curve: \emph{equivariant circuit}.
+    \end{itemize}
+    \item Circuit 2: Oriented Dog Head Detection.
+    \begin{itemize}
+        \item Spans 4 layers.
+        \item Implements sophisticated equivariance.
+        \item ImageNet model must develop many neurons for dog recognition.
+        \item Circuit for recognising dogs facing left and dogs facing right.
+        \begin{itemize}
+            \item Two mirrored pathways over 3 layers.
+            \item At each stage, inhibit each other, sharpening contrast.
+            \item Invariant neurons at end which respond to both pathways.
+            \item Pattern called \emph{unioning over cases}.
+            \begin{itemize}
+                \item Separately detects different cases, then takes union to make invariant, multifaceted units.
+                \item Mutual inhibition: behaves like XOR.
+            \end{itemize}
+            \item Surprising that network has learned to do this: could have done something much less sophisticated.
+            \item Looking at convolutions: head only detected on correct side.
+        \end{itemize}
+    \end{itemize}
+    \item Circuit 3: Cars in Superposition.
+    \begin{itemize}
+        \item Car detecting neuron.
+        \item Looks for windows on bottom of convolution window, and wheels on bottom.
+        \item Then spreads car features over neurons which seem to be primarily doing something else.
+        \item Looks deliberate.
+        \item \emph{Superposition}.
+        \item Authors believe it allows network to conserve neurons for other more important things.
+        \item If two things don't co-occur (e.g.\@ cars and dogs), they can be dealt with by one higher-level neuron.
+    \end{itemize}
+    \item Circuit Motifs.
+    \begin{itemize}
+        \item Same motifs reappear throughout circuits.
+        \begin{itemize}
+            \item Equivariance.
+            \item Unioning over cases.
+            \item Superposition.
+        \end{itemize}
+        \item Understanding motifs likely more important than understanding individual circuits, in the long run.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Claim 3: Universality}
+
+\begin{itemize}
+    \item Widely accepted that first layer of vision networks form Gabor layers.
+    \item If meaningful features form in latter layers, perhaps not surprising if same features form in layers beyond the first.
+    \item Also perhaps not surprising if features combine in the same way.
+    \item Prior work: different networks develop highly correlated neurons, and similar representations in hidden layers.
+    \begin{itemize}
+        \item But high correlation doesn't necessarily imply similar features.
+    \end{itemize}
+    \item Ideally: like to determine features, and show that \emph{these} are universal across models.
+    \item Similarly for circuits.
+    \item Only anecdotal evidence so far: similar low-level features form in many different network architectures, and with two different datasets.
+    \item If universality true, might we also hope to find similar features in biological networks?
+    \begin{itemize}
+        \item Some work has shown that neural networks can be helpful in analysing biological systems.
+    \end{itemize}
+    \item If universality false, not fatal, but influences what kind of research makes sense.
+    \begin{itemize}
+        \item Would need to focus on a subset of models with particular societal importance.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Interpretability as a Natural Science}
+
+\begin{itemize}
+    \item Thomas Kuhn distinguishes `normal science', in which researchers have common paradigm, with `extraordinary science', in which there is none.
+    \item Extraordinary science not good place to be.
+    \item Looks like interpretability is an extraordinary science/pre-paradigmatic right now.
+    \item There isn't a common framework for evaluating work.
+    \begin{itemize}
+        \item Some researchers want `interpretability benchmark'.
+        \item Others want it to be based on user studies.
+    \end{itemize}
+    \item Third proposal: interpretability is empirical: we take neural networks as object of study.
+    \item Neural nets very complicated objects: hard to formalise interesting empirical statements.
+    \item Circuits sidestep this issue.
+    \begin{itemize}
+        \item Falsifiable.
+        \item Small enough circuits could be investigated rigorously/mathematically.
+    \end{itemize}
+    \item Circuits could act as epistemic foundation for interpretability.
+\end{itemize}
