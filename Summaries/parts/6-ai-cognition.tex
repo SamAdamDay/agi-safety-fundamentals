@@ -577,11 +577,99 @@
 \end{itemize}
 
 
-\section{Embedded Agents, part 1}
+\section{Embedded Agents, Part 1}
 
 \url{https://intelligence.org/2018/10/29/embedded-agents/}
 
 \begin{itemize}
     \item What does it mean to build a learning agent embedded in the real world?
     \item Alexei: video game playing robot.
+    \begin{itemize}
+        \item Clear input and output channels.
+        \item Alexei capable of holding whole video game in mind.
+        \item If Alexei has uncertainty, it is only empirical, e.g.\@ about which game his is playing, not logical, like which inputs yield which outputs.
+        \item Alexei must store in his mind every possible he could be playing.
+        \item Alexei does not have to think about himself.
+        \item Only optimising game, not himself.
+        \item Can think of himself as unchanging, indivisible atom.
+        \item Alexei cleanly separated from environment he is optimising.
+    \end{itemize}
+    \item Emmy: playing real life.
+    \begin{itemize}
+        \item Within environment she is trying to optimise.
+        \item Doesn't have functional environment.
+        \item Since any decision Emmy takes is part of the environment, it's difficult to formalise `choice' for her.
+        \begin{itemize}
+            \item Generally: how do we formalise that one part of any system has made a `choice', when one one action actually happens.
+        \end{itemize}
+        \item Since Emmy is smaller than environment, can't store a complete model of environment.
+        \begin{itemize}
+            \item So can't carry out full Bayesian reasoning.
+        \end{itemize}
+        \item Emmy capable of self-improvement, but how can she make sure that she only changes in ways that are helpful, and doesn't deviate from her current goal.
+        \item Emmy not atom: made of same pieces as environment.
+        \item Emmy faces threats from within: might spin up optimising subroutines which become intelligent.
+    \end{itemize}
+    \item AIXI framework for understanding Alexei.
+    \begin{itemize}
+        \item Series of actions, observations and rewards.
+        \item Actions function of all previous triples.
+        \item Used when there is uncertainty in environment: has distribution over all possible environments, and uses this select action.
+        \item While environments computable, AIXI itself is not.
+    \end{itemize}
+    \item Alexei and AIXI \emph{dualistic}: only interaction between agent-stuff and environment-stuff.
+    \begin{itemize}
+        \item Agent larger than environment.
+        \item No self-referential reasoning: agent-stuff different from environment-stuff.
+    \end{itemize}
+    \item Can use AIXI to get good understanding of Alexei.
+    \item Emmy is more confusing.
+    \begin{itemize}
+        \item Does not have well-defined i/o.
+        \item Smaller than environment.
+        \item Able to reason about self and self-improve.
+        \item Made of parts similar to environment.
+    \end{itemize}
+    \item Theory of embedded agency: understanding agents like Emmy.
+    \item Decision theory.
+    \begin{itemize}
+        \item Embedded optimisation.
+        \item Since we don't have functional environment, argmax doesn't work.
+        \item Major open problems.
+        \begin{itemize}
+            \item Logical counterfactuals: what would happen under $B$, given that we can prove $A$ actually holds?
+            \item Environments including copies of the agent.
+            \item Logical updatenessless: combine Wei Dai's updateless decision theory with logical uncertainty.
+        \end{itemize}
+    \end{itemize}
+    \item Embedded world-models.
+    \begin{itemize}
+        \item World-models which include the agent itself.
+        \item Difficult: theoretical guarantees ruined by the fact that the true universe is not in hypothesis space, and that we have to make non-Bayesian updates.
+        \item Major open problems.
+        \begin{itemize}
+            \item Logical uncertainty: combine world of logic with world of probability.
+            \item Multi-level modelling: several models of same world at different levels of description.
+            \item Ontological crises: realise model or goal specified using different ontology from real world.
+        \end{itemize}
+    \end{itemize}
+    \item Robust delegation.
+    \begin{itemize}
+        \item Agent creating more intelligent successor to help optimise goals.
+        \item From point of view of initial agent: how to create successor which will robustly not use intelligence against you.
+        \item From point of view of successor: how to robustly learn or respect goals of something much less intelligent, is manipulable, and has a flawed ontology?
+        \item Löbian obstacle: impossible to consistently trust things more intelligent than you.
+        \item Major open problems.
+        \begin{itemize}
+            \item Vingean reflection: how to reason about and trust agents smarter than you.
+            \item Value learning: how smarter agent can learn goals of weaker.
+            \item Corrigibility: get smarter agent to allow (or even help with) modifications to itself.
+        \end{itemize}
+    \end{itemize}
+    \item Subsystem alignment.
+    \begin{itemize}
+        \item How one unified agent can prevent subsystems fighting with it or with each other.
+        \item Sub-agents may arise accidentally, when performing search over sufficiently complex space.
+        \item Major open problem: avoid spinning up adversarial subsystems.
+    \end{itemize}
 \end{itemize}
