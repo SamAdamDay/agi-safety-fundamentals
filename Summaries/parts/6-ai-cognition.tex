@@ -131,3 +131,120 @@
         \end{itemize}
     \end{itemize}
 \end{itemize}
+
+
+\section{Zoom In: An Introduction to Circuits}
+
+\url{https://distill.pub/2020/circuits/zoom-in/}
+
+\begin{itemize}
+    \item \emph{Zooming in}: period of scientific advancement in which increase in precision leads to qualitative change in capacity to investigate.
+    \item Neural networks have a rich inner world.
+    \item Examine networks at scale of individual neurons or even individual weights.
+\end{itemize}
+
+
+\subsection{Three Speculative Claims}
+
+\begin{enumerate}[label={\bfseries Claim \arabic*.}, leftmargin=*, labelindent=3pt]
+    \item Features.
+    \begin{itemize}[leftmargin=-10pt]
+        \item Features fundamental unit of neural networks.
+        \item Correspond to directions in neuron activation space.
+        \item Can be rigorously studied and understood.
+    \end{itemize}
+    \item Circuits.
+    \begin{itemize}[leftmargin=-10pt]
+        \item Features come together as circuits, connected by weights.
+        \item Can be rigorously studied and understood.
+    \end{itemize}
+    \item Universality.
+    \begin{itemize}[leftmargin=-10pt]
+        \item Features and circuits exist across all models.
+    \end{itemize}
+\end{enumerate}
+
+
+\subsection{Claim 1: Features}
+
+\begin{itemize}
+    \item Later layers contain higher level features.
+    \item Community divided on existence of features.
+    \item Authors believe, after 1000s hours studying individual neurons that neurons typically are understandable.
+    \item Understandable $\neq$ simple.
+    \item But typically eventually see neuron as doing something quite natural.
+    \item Example 1: Curve Detectors.
+    \begin{itemize}
+        \item Curve-detecting neurons found in every nontrivial vision model examined.
+        \item Straddle boundary between features generally agreed to exist (edges) and features about which there is scepticism.
+        \item Authors believe evidence is strong that these are really detecting curves.
+        \begin{enumerate}[label={\bfseries Argument \arabic*.}, leftmargin=*, labelindent=3pt]
+            \item Feature visualisation
+            \begin{itemize}[leftmargin=-30pt]
+                \item Optimising to get the neurons to fire reliably produces curves.
+                \item Establishes causal link: everything example added to cause neuron to fire.
+            \end{itemize}
+            \item Dataset examples
+            \begin{itemize}[leftmargin=-30pt]
+                \item Dataset examples which cause neurons to fire are reliably curves.
+                \item Moderate firing examples are generally less-perfect curves.
+            \end{itemize}
+            \item Synthetic examples.
+            \begin{itemize}[leftmargin=-30pt]
+                \item Fire for range of synthetic examples of curves.
+                \item Only fire near expected orientation, and don't fire for straight lines or corners.
+            \end{itemize}
+            \item Joint tuning.
+            \begin{itemize}[leftmargin=-30pt]
+                \item Firing changes continuously as examples rotated, and other neurons for other orientations start firing as the first stops.
+            \end{itemize}
+            \item Feature implementation.
+            \begin{itemize}[leftmargin=-30pt]
+                \item By looking at circuit constructing curve detector, can read off algo for detecting curves.
+                \item Can't see suggestion of alternative reading, though some small weights not understood.
+            \end{itemize}
+            \item Feature use.
+            \begin{itemize}[leftmargin=-30pt]
+                \item Downstream users of neurons use curves in expected way and detect things involving curves.
+            \end{itemize}
+            \item Handwritten circuits.
+            \begin{itemize}[leftmargin=-30pt]
+                \item Can reimplement curve detector by manually specifying the weights.
+            \end{itemize}
+        \end{enumerate}
+        \item Claims don't fully eliminate possibility of secondary interpretation, but these activations are likely much weaker.
+        \item Meets evidentiary used in neuroscience.
+    \end{itemize}
+    \item Example 2: High-Low Frequency Detectors.
+    \begin{itemize}
+        \item Example of feature which is less intuitive, but once understood seems natural and elegant.
+        \item Look for high-frequency patterns on one side of the receptive field, and low-frequency patterns on the other.
+        \item Appear to be one of the heuristics used for detecting boundaries.
+        \item Arguments above can be tweaked to provide strong case that these features exist.
+    \end{itemize}
+    \item Example 3: Pose-Invariant Dog Head Detector.
+    \begin{itemize}
+        \item Higher-level feature.
+        \item Can also adapt arguments above.
+        \begin{itemize}
+            \item For example, can use 3D dog head to generate synthetic examples.
+            \item Some arguments require quite a bit of effort. Circuit arguments (below) more scalable.
+        \end{itemize}
+    \end{itemize}
+    \item Polysemantic Neurons.
+    \begin{itemize}
+        \item Some neurons respond to a whole range of types of features.
+        \item Not responding to some commonality between features.
+        \item Present challenge for circuits agenda.
+        \item Hope that polysemantic neurons can be resolved.
+        \begin{itemize}
+            \item By `unfolding network' to convert them into pure features.
+            \item Training networks not to exhibit them.
+            \item Essentially problem studied in literature on disentangling representations.
+        \end{itemize}
+        \item Why do they form?
+        \begin{itemize}
+            \item Superposition (below).
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
