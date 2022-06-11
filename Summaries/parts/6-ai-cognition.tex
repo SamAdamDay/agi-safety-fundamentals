@@ -82,7 +82,7 @@
         \item Important part of the reason for this seems to be the use of strided convolution layers and pooling operations.
         \item The Spectrum of Regularization.
         \begin{itemize}
-            \item In order to get useful visualisations, need to impose regularisation, noise or constraint.
+            \item In order to get useful visualisations, need to impose regularisation, prior or constraint.
             \item Spectrum of regularisation, from weak to strong.
             \begin{enumerate}[label=(\roman*)]
                 \item Unregularised.
@@ -112,13 +112,13 @@
             \item Try to learn a model of the real data and use that as prior.
             \item Can generate photorealistic images.
             \item Can be hard to tell what came from the model being visualised and what from the prior.
-            \item On approach: optimise within latent space given by generative model.
+            \item One approach: optimise within latent space given by generative model.
             \item Another: jointly optimise prior along with objective.
         \end{itemize}
     \end{itemize}
     \item Preconditioning and Parameterisation.
     \begin{itemize}
-        \item About techniques not really reguliser on output example, but transformation of gradient.
+        \item Above techniques not really reguliser on output example, but transformation of gradient.
         \item This is preconditioning: essentially a reparametrisation which changes the optimisation landscape, preserving the minima but changing the steepness of points.
         \begin{itemize}
             \item Powerful technique in optimisation.
@@ -600,7 +600,7 @@
         \item Doesn't have functional environment.
         \item Since any decision Emmy takes is part of the environment, it's difficult to formalise `choice' for her.
         \begin{itemize}
-            \item Generally: how do we formalise that one part of any system has made a `choice', when one one action actually happens.
+            \item Generally: how do we formalise that one part of any system has made a `choice', when only one action actually happens.
         \end{itemize}
         \item Since Emmy is smaller than environment, can't store a complete model of environment.
         \begin{itemize}
