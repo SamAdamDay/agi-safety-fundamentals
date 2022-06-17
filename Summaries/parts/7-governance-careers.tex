@@ -257,3 +257,155 @@
         \item AI problem similar, but requires even more diverse portfolio, because there is more uncertainty.
     \end{itemize}
 \end{itemize}
+
+
+\section{Cooperation, conflict and transformative AI: sections 1 \& 2}
+
+\subsection{Introduction}
+
+\begin{itemize}
+    \item Transformative artificial intelligence: \textquote{AI that precipitates a transition comparable to (or more significant than) the agricultural or industrial revolution}.
+    \item Research agenda: preventing catastrophic cooperation failures between TAI-enabled actors.
+    \item Risks from TAI great enough to motivate research now, despite uncertainties around timeline.
+    \item Cooperation failures can occur between agent-like systems, or between human actors assisted by powerful but narrow AIs.
+    \item TAI likely to present new challenges compared to existing research on cooperation in other fields.
+    \begin{itemize}
+        \item Because of more powerful actors.
+        \item Powerful actors can significantly increase capabilities with successful bargaining.
+        \item Qualitative changes in nature of multi-agent systems, stemming from nature of machine intelligence.
+        \begin{itemize}
+            \item Ability to make credible commitments.
+            \item Ability to self-modify.
+            \item Ability to model other agents.
+        \end{itemize}
+    \end{itemize}
+    \item Cooperation failure: models and examples.
+    \begin{itemize}
+        \item \emph{Social dilemma}: Game in which mutual cooperation is better for everyone, but individual rationality may lead to defection.
+        \item \emph{Nash equilibrium}.
+        \item Social dilemmas have been used to model international politics cooperation failures.
+        \begin{itemize}
+            \item E.g.\@ arms race as Prisoner's Dilemma.
+        \end{itemize}
+        \item Usually better to model using games with incomplete information.
+        \item Analyses of war: bargaining model of warm / crisis bargaining.
+        \item Three standard hypotheses for why states go to war.
+        \begin{itemize}
+            \item Credibility: can't credibly commit to terms of peace treaty.
+            \item Incomplete information: different private info wrt chances of winning war; incentive to be deceitful about this.
+            \item Indivisible stakes: things of value can't be shared between parties.
+        \end{itemize}
+        \item A different cooperation failure: extortion.
+        \begin{itemize}
+            \item Harms extortee.
+            \item Also harms extorter, because of the inefficiencies of making threats (like war).
+        \end{itemize}
+        \item Counterargument to `indivisible stakes': simulated conflict.
+        \begin{itemize}
+            \item Allocated full stakes to party based on probability of winning war Pareto-dominates.
+            \item Relies on e.g.\@ access to mutually trusted war-simulator.
+        \end{itemize}
+        \item Game theoretic methods not fully suitable, since TAI-enabled agents not necessarily modelled as rational agents.
+    \end{itemize}
+    \item Outline of the agenda.
+    \begin{itemize}
+        \item Section 2: AI strategy and governance.
+        \begin{itemize}
+            \item Risks from cooperation failures depends on strategic landscape when TAI deployed.
+            \begin{itemize}
+                \item Uni-polar vs.\@ multi-polar.
+                \item Offensive vs.\@ defensive capabilities.
+            \end{itemize}
+            \item Want to understand this landscape.
+            \begin{itemize}
+                \item Figure out which levers prevent catastrophic cooperation failures.
+            \end{itemize}
+            \item This is quite theoretical: how does it translate to TAI governance.
+        \end{itemize}
+        \item Section 3: Credibility.
+        \begin{itemize}
+            \item Agents' ability to self-modify, and the ability to inspect internal workings of others, changes nature of credible commitments.
+            \item Calls for application of existing game theory and decision theory to new kinds of agents, and the development of new theory.
+        \end{itemize}
+        \item Section 4: Peaceful bargaining mechanisms.
+        \begin{itemize}
+            \item \emph{Peaceful bargaining mechanism}: system which doesn't lead to conflict, and in which each player in incentivised to play strategy not leading to destructive conflict.
+        \end{itemize}
+        \item Section 5: Contemporary AI architectures.
+        \begin{itemize}
+            \item Multi-agent AI increasingly studied by ML researchers.
+            \item Unexplored avenues remain.
+            \begin{itemize}
+                \item Using agents' transparency to one another.
+                \item Implications of multi-agent training schemes.
+                \item Decision making procedures implicitly implemented by RL schemes.
+            \end{itemize}
+        \end{itemize}
+        \item Section 6: Humans in the loop.
+        \begin{itemize}
+            \item Either human-controlled AI or AI which seeks to respect human preferences.
+            \item Behavioural game theory for human-in-the-loop AIs.
+            \item Interaction between humans and AIs.
+        \end{itemize}
+        \item Section 7: Foundations of rational agency.
+        \begin{itemize}
+            \item Various open problems relevant to TAI.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{AI strategy and governance}
+
+\begin{itemize}
+    \item Polarity and transition scenarios.
+    \begin{itemize}
+        \item Prima facie preferable if TAI results in unipolar outcome: single actor develops TAI.
+        \item Analysis likely less simple, judging by literature on different power distributions in international relations.
+        \item Wants.
+        \begin{itemize}
+            \item Understand likelihoods of various scenarios.
+            \item Relative safety of these.
+            \item Feasibility of policy directions to steer towards better power distributions.
+        \end{itemize}
+        \item Questions.
+        \begin{itemize}
+            \item Should we expect rapid jumps in AI capabilities?
+            \begin{itemize}
+                \item Makes unipolar more likely.
+                \item So far progress gradual.
+            \end{itemize}
+            \item Which distributions of power give lower risks of catastrophic cooperation failures?
+            \item Which are the levers to shift towards these distributions, which don't have major downsides?
+        \end{itemize}
+    \end{itemize}
+    \item Commitment and transparency.
+    \begin{itemize}
+        \item Strategic implications of ability to commit.
+        \item \emph{Commitment races}: both parties want to make certain commitments (e.g.\@ to carry out threat if demands not met) as soon as possible, to improve bargaining position.
+        \begin{itemize}
+            \item Like Chicken.
+            \item Dangerous situation.
+            \item Transparency double-edged sword.
+            \begin{itemize}
+                \item Can spot in advance e.g.\@ build-up of doomsday devices.
+                \item Can make more credible commitments.
+            \end{itemize}
+            \item What policy encourages the development of transparent TAI systems?
+        \end{itemize}
+        \item In human societies, greater abilities to make credible commitments facilitated large gains in trade.
+        \begin{itemize}
+            \item What features of increased credibility promote better outcomes?
+            \begin{itemize}
+                \item How would societal outcomes change with unlimited ability to make credible commitments?
+                \item Other societies where laws and norms allow(ed) this?
+            \end{itemize}
+            \item How have technologies changed bargaining in the past?
+            \item Open-source game theory: idealised form of mutual auditing.
+            \begin{itemize}
+                \item Historical cases of mutual auditing?
+            \end{itemize}
+            \item Costs from increased commitment ability?
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
