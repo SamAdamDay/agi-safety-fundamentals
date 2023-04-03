@@ -1,7 +1,7 @@
 AGI Safety Fundamentals Technical Alignment Curriculum Summaries
 ================================================================
 
-These are my personal summaries of the core readings for the [AGI Safety Fundamentals Technical Alignment Curriculum](https://www.eacambridge.org/technical-alignment-curriculum) by [Effective Altruism Cambridge](https://www.eacambridge.org/). This is part of a reading group being run by [Oxford Artificial Intelligence Society](https://oxai.org/).
+These are my personal summaries of the core readings for the [AGI Safety Fundamentals Technical Alignment Curriculum](https://www.agisafetyfundamentals.com/ai-alignment-curriculum). This is part of a reading group being run by [Oxford Artificial Intelligence Society](https://oxai.org/).
 
 The notes are written in LaTeX. See the [compiled PDF](Summaries/summaries.pdf).
 
